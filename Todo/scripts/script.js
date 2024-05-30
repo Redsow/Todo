@@ -47,12 +47,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 span.classList.add('completed');
             }
 
-            const deleteButton = this.createDeleteButton(li, task);
-            const doneButton = this.createDoneButton(li, task);
-
             li.appendChild(span);
-            li.appendChild(doneButton);
-            li.appendChild(deleteButton);
+
+            if (!task.done) {
+                const deleteButton = this.createDeleteButton(li, task);
+                const doneButton = this.createDoneButton(li, task);
+                li.appendChild(doneButton);
+                li.appendChild(deleteButton);
+            }
 
             if (task.done) {
                 this.completedTaskList.appendChild(li);
